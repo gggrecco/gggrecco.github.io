@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ERAS Application Cost Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="button"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+
+    #totalCost {
+      display: block;
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>ERAS Application Cost Calculator</h1>
+  <form>
+    <label for="specialty1">Enter # programs for Specialty 1:</label>
+    <input type="number" id="specialty1" name="specialty1" required><br><br>
+
+    <label for="specialty2">Enter # programs for Specialty 2:</label>
+    <input type="number" id="specialty2" name="specialty2" required><br><br>
+
+    <label for="specialty3">Enter # programs for Specialty 3:</label>
+    <input type="number" id="specialty3" name="specialty3" required><br><br>
+
+    <input type="button" value="Calculate Cost" onclick="calculateCost()"><br><br>
+
+    <label for="totalCost">Total Cost:</label>
+    <span id="totalCost"></span>
+  </form>
+
+  <script>
+    function calculateCost() {
+      var specialty1 = parseFloat(document.getElementById('specialty1').value);
+      var specialty2 = parseFloat(document.getElementById('specialty2').value);
+      var specialty3 = parseFloat(document.getElementById('specialty3').value);
+
+      var cost1, cost2, cost3;
+      
+      if (specialty1 >= 31) {
+        cost1 = 99 + (10 * 19) + (10 * 23) + ((specialty1 - 30) * 26);
+      } else if (specialty1 >= 21 && specialty1 <= 30) {
+        cost1 = 99 + (10 * 19) + ((specialty1 - 20) * 23);
+      } else if (specialty1 >= 11 && specialty1 <= 20) {
+        cost1 = 99 + ((specialty1 - 10) * 19);
+      } else if (specialty1 >= 1) {
+        cost1 = 99;
+      } else {
+        cost1 = 0;
+      }
+
+      if (specialty2 >= 31) {
+        cost2 = 99 + (10 * 19) + (10 * 23) + ((specialty2 - 30) * 26);
+      } else if (specialty2 >= 21 && specialty2 <= 30) {
+        cost2 = 99 + (10 * 19) + ((specialty2 - 20) * 23);
+      } else if (specialty2 >= 11 && specialty2 <= 20) {
+        cost2 = 99 + ((specialty2 - 10) * 19);
+      } else if (specialty2 >= 1) {
+        cost2 = 99;
+      } else {
+        cost2 = 0;
+      }
+
+      if (specialty3 >= 31) {
+        cost3 = 99 + (10 * 19) + (10 * 23) + ((specialty3 - 30) * 26);
+      } else if (specialty3 >= 21 && specialty3 <= 30) {
+        cost3 = 99 + (10 * 19) + ((specialty3 - 20) * 23);
+      } else if (specialty3 >= 11 && specialty3 <= 20) {
+        cost3 = 99 + ((specialty3 - 10) * 19);
+      } else if (specialty3 >= 1) {
+        cost3 = 99;
+      } else {
+        cost3 = 0;
+      }
+
+      var totalCost = cost1 + cost2 + cost3;
+      document.getElementById('totalCost').textContent = '$' + totalCost;
+    }
+  </script>
+</body>
+</html>
